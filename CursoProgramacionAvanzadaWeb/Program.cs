@@ -28,4 +28,8 @@ app.MapControllerRoute(
     name: "Home",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "Carro",
+    pattern: "{controller=Carro}/{action=Index}/{id?}");
+
 app.Run();

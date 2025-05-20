@@ -1,0 +1,26 @@
+﻿@model CarroViewModel
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4 text-center">Formulario de Carro</h2>
+        @* Muestra errores generales de validación *@
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+        <form asp-action="CarroFormulario" method="post">
+            <div class="form-group mb-3">
+                <label asp-for="marca" class="form-label">Marca</label>
+                <input asp-for="marca" class="form-control" />
+                @Html.ValidationMessageFor(m => m.marca, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="modelo" class="form-label">Modelo</label>
+                <input asp-for="modelo" class="form-control" />
+                @Html.ValidationMessageFor(m => m.modelo, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Guardar</button>
+        </form>
+    </div>
+</div>
+
+
+

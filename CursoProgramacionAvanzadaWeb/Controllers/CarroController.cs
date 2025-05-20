@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CursoProgramacionAvanzadaWeb.Controllers
 {
-    public class LoginController : Controller
+    public class CarroController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<CarroController> _logger;
 
-        public LoginController(ILogger<HomeController> logger)
+        public CarroController(ILogger<CarroController> logger)
         {
             _logger = logger;
         }
@@ -19,12 +19,12 @@ namespace CursoProgramacionAvanzadaWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult LogInFormulario(LogInViewModel login)
+        public IActionResult CarroFormulario(CarroViewModel carro)
         {
             if (!ModelState.IsValid)
             {
                 // Mostrar los errores en la misma vista de login
-                return View("Index", login);
+                return View("Index", carro);
             }
 
             //validaciones de formulario, campos en blanco, formatos, decimal correctos
@@ -34,8 +34,8 @@ namespace CursoProgramacionAvanzadaWeb.Controllers
             // Validar el nombre de usuario y la contraseña
 
             // Autenticación exitosa, redirigir a la página principal
-            return RedirectToAction("Index", "Carro");
-   
+            return RedirectToAction("Privacy", "Home");
+
 
         }
     }
