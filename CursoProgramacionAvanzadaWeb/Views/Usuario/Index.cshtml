@@ -1,0 +1,53 @@
+﻿@model UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Crear Usuario</h2>
+
+    @if (ViewBag.MensajeExito != null)
+    {
+        <div class="alert alert-success">
+            @ViewBag.MensajeExito
+        </div>
+    }
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+        <div class="mb-3">
+            <label asp-for="NombreCompleto" class="form-label">Nombre completo</label>
+            @Html.TextBoxFor(m => m.NombreCompleto, new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(m => m.NombreCompleto)
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Identificacion" class="form-label">Identificación</label>
+            @Html.TextBoxFor(m => m.Identificacion, new { @class = "form-control" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(m => m.Identificacion)
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Edad" class="form-label">Edad</label>
+            @Html.TextBoxFor(m => m.Edad, new { @class = "form-control", type = "number" })
+            <div class="text-danger">
+                @Html.ValidationMessageFor(m => m.Edad)
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    }
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
